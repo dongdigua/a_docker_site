@@ -26,4 +26,4 @@ site-*.tar
 /tmp/
 
 # html document
-*.html
+The*.html

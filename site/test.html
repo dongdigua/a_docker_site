@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title>锟斤拷烫烫烫</title>
+  </head>
+  <body>
+    <button onclick="doSomething()" style="background-color:black; color:#66ccff">click me!</button>
+    <p id="id">What will happen if you click the button?</p>
+    <script>
+      function doSomething() {
+        //alert(document.getElementById("id").innerHTML)
+        if(document.getElementById("id").innerHTML == "烫烫烫"){
+          document.getElementById("id").innerHTML="锟斤拷";
+        } else {
+          document.getElementById("id").innerHTML="烫烫烫";
+        }
+      }
+    </script>
+  </body>
+</html>

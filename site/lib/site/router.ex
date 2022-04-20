@@ -26,6 +26,12 @@ defmodule Site.Router do
     send_resp(conn, 200, content)
   end
 
+  get "/test" do
+    content = File.read!("test.html")
+    Logger.info("read test page")
+    send_resp(conn, 200, content)
+  end
+
   match _ do
     send_resp(conn, 404, "Oops!")
   end
