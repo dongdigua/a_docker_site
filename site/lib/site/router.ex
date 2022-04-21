@@ -12,6 +12,8 @@ defmodule Site.Router do
     /server : get the status of PPP server
     /beam : to view the beam book
     /ttt : my first js webpage
+    /input : my first dynamic website, you can input data and will be stored in blockchain
+    /view : view the blockchain history data
     """)
   end
 
