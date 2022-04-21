@@ -8,4 +8,8 @@ defmodule Site.Req do
       _ -> "unexpected error!"
     end
   end
+
+  def all_blocks do
+    :mnesia.match_object({:block, :_, :_, :_, :_, :_}) |> inspect(pretty: true)
+  end
 end

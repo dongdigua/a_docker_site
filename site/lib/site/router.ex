@@ -31,13 +31,18 @@ defmodule Site.Router do
 
   get "/ttt" do
     content = File.read!("www/ttt.html")
-    Logger.info("read test page")
+    Logger.info("read ttt page")
     send_resp(conn, 200, content)
   end
 
   get "/input" do
     content = File.read!("www/input.html")
     Logger.info("input page")
+    send_resp(conn, 200, content)
+  end
+
+  get "/view" do
+    content = Site.Req.all_blocks()
     send_resp(conn, 200, content)
   end
 

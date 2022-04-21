@@ -24,7 +24,7 @@ defmodule BlockChain do
   def add(data) do
     last_block = prev()
     time = NaiveDateTime.utc_now()
-    if elem(last_block, 1) |> elem(2) |> NaiveDateTime.diff(time) <= -10 do
+    if elem(last_block, 1) |> elem(2) |> NaiveDateTime.diff(time) <= -30 do
       BlockChain.Block.add_new(elem(last_block, 1), data)
     else
       {:error, :later}
