@@ -5,6 +5,7 @@ defmodule Site.Application do
 
   @impl true
   def start(_type, _args) do
+    BlockChain.init()
     children = [
       {Plug.Cowboy, scheme: :http, plug: Site.Router, options: [port: 8080]}
     ]

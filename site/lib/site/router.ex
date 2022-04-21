@@ -9,8 +9,9 @@ defmodule Site.Router do
     send_resp(conn, 200,
     """
     Welcome!
-    visit /server to get the status of PPP server
-    visit /beam to view the beam book
+    /server : get the status of PPP server
+    /beam : to view the beam book
+    /ttt : my first js webpage
     """)
   end
 
@@ -21,15 +22,28 @@ defmodule Site.Router do
   end
 
   get "/beam" do
-    content = File.read!("The Erlang Runtime System.html")
+    content = File.read!("www/The Erlang Runtime System.html")
     Logger.info("read beam book html")
     send_resp(conn, 200, content)
   end
 
-  get "/test" do
-    content = File.read!("test.html")
+  get "/ttt" do
+    content = File.read!("www/ttt.html")
     Logger.info("read test page")
     send_resp(conn, 200, content)
+  end
+
+  get "/input" do
+    content = File.read!("www/input.html")
+    Logger.info("input page")
+    send_resp(conn, 200, content)
+  end
+
+  get "/yourinput" do
+    query_string = conn.query_string
+    Logger.info(query_string)
+    result = Site.Req.add_to_block(query_string)
+    send_resp(conn, 200, result)
   end
 
   match _ do

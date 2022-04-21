@@ -27,3 +27,6 @@ site-*.tar
 
 # html document
 The*.html
+
+# DataBases
+Mnesia.*
