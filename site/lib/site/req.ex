@@ -10,6 +10,6 @@ defmodule Site.Req do
   end
 
   def all_blocks do
-    :mnesia.match_object({:block, :_, :_, :_, :_, :_}) |> inspect(pretty: true)
+    :mnesia.dirty_match_object({:block, :_, :_, :_, :_, :_}) |> inspect(pretty: true)
   end
 end

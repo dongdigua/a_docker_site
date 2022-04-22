@@ -30,3 +30,6 @@ The*.html
 
 # DataBases
 Mnesia.*
+
+# Video
+*.mp4

@@ -6,15 +6,8 @@ defmodule Site.Router do
   plug :dispatch
 
   get "/" do
-    send_resp(conn, 200,
-    """
-    Welcome!
-    /server : get the status of PPP server
-    /beam : to view the beam book
-    /ttt : my first js webpage
-    /input : my first dynamic website, you can input data and will be stored in blockchain
-    /view : view the blockchain history data
-    """)
+    content = File.read!("www/home.html")
+    send_resp(conn, 200, content)
   end
 
   get "/server" do
@@ -43,6 +36,12 @@ defmodule Site.Router do
 
   get "/view" do
     content = Site.Req.all_blocks()
+    send_resp(conn, 200, content)
+  end
+
+  get "/video" do
+    content = File.read!("www/video.html")
+    Logger,info("video")
     send_resp(conn, 200, content)
   end
 
