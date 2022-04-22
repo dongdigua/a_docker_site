@@ -35,20 +35,19 @@ defmodule Site.Router do
   end
 
   get "/view" do
+    Logger.info("viewing database")
     content = Site.Req.all_blocks()
     send_resp(conn, 200, content)
   end
 
   get "/video" do
-    content = File.read!("www/video.html")
-    Logger,info("video")
+    content = File.read!("www/video.mp4")
+    Logger.info("video!")
     send_resp(conn, 200, content)
   end
 
   get "/yourinput" do
-    query_string = conn.query_string
-    Logger.info(query_string)
-    result = Site.Req.add_to_block(query_string)
+    result = Site.Req.add_to_block(conn.query_string)
     send_resp(conn, 200, result)
   end
 

@@ -1,6 +1,9 @@
 defmodule Site.Req do
+  require Logger
+
   def add_to_block(query_string) do
-    input_shortened = Regex.run(~r/^input=(\w+)$/, query_string) |> tl() |> hd() |> String.slice(0..31)
+    Logger.debug(query_string)
+    input_shortened = Regex.run(~r/^input=(\w+)/, query_string) |> tl() |> hd() |> String.slice(0..31)
 
     case BlockChain.add(input_shortened) do
       {:error, :later} -> "try again later!"
