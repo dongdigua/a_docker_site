@@ -48,7 +48,11 @@ defmodule Site.Router do
 
   get "/yourinput" do
     result = Site.Req.add_to_block(conn.query_string)
-    send_resp(conn, 200, result)
+    send_resp(conn, 200, """
+    <!DOCTYPE html>
+    <meta http-equiv="refresh" content="3;url=https://space.bilibili.com/489732092">
+    <body>#{result}<br>will go to my bilibili homepage</body>
+    """)
   end
 
   match _ do
