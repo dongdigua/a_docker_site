@@ -1,6 +1,4 @@
 FROM elixir:1.13.4-alpine
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories; \
-apk add git
 VOLUME [ "/www/db" ]
 COPY ./site /www/site/
 WORKDIR /www/site/
