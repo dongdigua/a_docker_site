@@ -2,6 +2,7 @@ defmodule Site.Router do
   use Plug.Router
   require Logger
 
+  plug(Plug.Parsers, parsers: [:urlencoded])
   plug :match
   plug :dispatch
 
@@ -11,7 +12,7 @@ defmodule Site.Router do
   end
 
   get "/server" do
-    state = MCPing.get_info("ppp.vancraft.cn") |> inspect
+    state = Site.MC.mc()
     Logger.info("get ppp state: #{state}")
     send_resp(conn, 200, state)
   end
@@ -46,8 +47,9 @@ defmodule Site.Router do
     send_resp(conn, 200, content)
   end
 
-  get "/yourinput" do
-    result = Site.Req.add_to_block(conn.query_string)
+  post "/yourinput" do
+    #IO.inspect conn
+    result = Site.Req.add_to_block(conn.body_params)
     send_resp(conn, 200, """
     <!DOCTYPE html>
     <meta http-equiv="refresh" content="3;url=https://space.bilibili.com/489732092">

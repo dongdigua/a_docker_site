@@ -33,3 +33,7 @@ Mnesia.*
 
 # Video
 *.mp4
+
+rebar3
+hex-1.0.1.ez
+mc.ex
