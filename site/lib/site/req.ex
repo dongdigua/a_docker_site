@@ -4,7 +4,7 @@ defmodule Site.Req do
   def add_to_block(body) do
     Logger.debug(body)
     input_shortened = body["input"]
-    |> String.replace(~r/[<>]|<\w+>|<\/\w+>/, "")
+    |> String.replace(~r/<\w+>|<\/\w+>|[<>]/, "")
     |> String.slice(0..31)
 
     case BlockChain.add(input_shortened) do
